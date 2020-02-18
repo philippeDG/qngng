@@ -19,8 +19,8 @@ with community contributions, so this fork is necessary.
 == Features
 
 * Generate a random Queb name from lists of popular Queb first names
-  and surnames, and/or from an existing https://uda.ca/[UDA] directory
-  member name:
+  and surnames, from an existing https://uda.ca/[UDA] directory
+  member name, and/or from other lists:
 +
 ----
 $ qngng
@@ -38,6 +38,14 @@ $ qngng --cat=uda-singers
 Daniel Boucher
 ----
 +
+----
+$ qngng --cat=lbl
+----
++
+----
+Stéphane-Albert Boulais
+----
++
 You can mix categories:
 +
 ----
@@ -51,11 +59,28 @@ Karl-Hugo Van De Kerckhove
 The available categories are:
 +
 --
-** `std`
-** `uda`
-** `uda-actors`
-** `uda-hosts`
-** `uda-singers`
+`lbl`::
+    Name of a character in
+    https://www.onf.ca/film/bete_lumineuse/[La bête lumineuse].
+
+`sn`::
+    Name of a character in
+    https://www.imdb.com/title/tt3480144/[Série noire].
+
+`std`::
+    Popular first names and surnames.
+
+`uda`::
+    UDA member name.
+
+`uda-actors`::
+    UDA actor member name.
+
+`uda-hosts`::
+    UDA host member name.
+
+`uda-singers`::
+    UDA singer member name.
 --
 
 * Generate a random male or female name:
@@ -103,11 +128,11 @@ andreeAnneDaoust
 ----
 +
 ----
-$ qngng --cap-camel-case --male --cat=uda-singers
+$ qngng --cap-camel-case --male --cat=sn
 ----
 +
 ----
-FredericStGelais
+MarcArcand
 ----
 
 See `qngng --help` for the complete list of options.

@@ -121,6 +121,8 @@ def _random_cat_fullname(cat_name, gender):
         'uda-actors': ['uda-actors'],
         'uda-hosts': ['uda-hosts'],
         'uda-singers': ['uda-singers'],
+        'lbl': ['lbl'],
+        'sn': ['sn'],
     }[cat_name]
 
     objs = []
@@ -198,6 +200,8 @@ def _parse_args():
         'uda-actors',
         'uda-hosts',
         'uda-singers',
+        'lbl',
+        'sn',
     }
 
     if args.cat is None:

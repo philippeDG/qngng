@@ -1,0 +1,150 @@
+// Render with Asciidoctor
+
+= qngng
+Philippe Proulx <https://eepp.ca/>
+:toc:
+
+image:https://img.shields.io/pypi/v/qngng.svg?label=Latest%20version[link="https://pypi.python.org/pypi/qngng"]
+
+**_qngng_** is the
+_https://en.wikipedia.org/wiki/Quebec[Queb] name generator: next generation_.
+
+This is a fork (and then essentially a rewrite) of the more basic
+https://github.com/abusque/qng[qng] project which includes more options.
+
+Unfortunately, the qng maintainer is unresponsive and won't follow up
+with community contributions, so this fork is necessary.
+
+
+== Features
+
+* Generate a random Queb name from lists of popular Queb first names
+  and surnames, and/or from an existing https://uda.ca/[UDA] directory
+  member name:
++
+----
+$ qngng
+----
++
+----
+Théodore Banville
+----
++
+----
+$ qngng --cat=uda-singers
+----
++
+----
+Daniel Boucher
+----
++
+You can mix categories:
++
+----
+$ qngng --cat=uda-singers --cat=std
+----
++
+----
+Karl-Hugo Van De Kerckhove
+----
++
+The available categories are:
++
+--
+** `std`
+** `uda`
+** `uda-actors`
+** `uda-hosts`
+** `uda-singers`
+--
+
+* Generate a random male or female name:
++
+----
+$ qngng --female
+----
++
+----
+Karen Cusson
+----
++
+----
+$ qngng --male --cat=uda-hosts
+----
++
+----
+Louis-Francois Marcotte
+----
+
+* Print the generated name with various formats:
++
+----
+$ qngng --snake-case
+----
++
+----
+laura_viau
+----
++
+----
+$ qngng --kebab-case --cat=uda
+----
++
+----
+michel-mpambara
+----
++
+----
+$ qngng --camel-case --female
+----
++
+----
+andreeAnneDaoust
+----
++
+----
+$ qngng --cap-camel-case --male --cat=uda-singers
+----
++
+----
+FredericStGelais
+----
+
+See `qngng --help` for the complete list of options.
+
+
+== Install qngng
+
+To install qngng on the system:
+
+* Use `pip3`:
++
+--
+----
+$ sudo pip3 install --upgrade qngng
+----
+--
+
+To install qngng in your home directory:
+
+* Use `pip3`:
++
+--
+----
+$ pip3 install --user --upgrade qngng
+----
+--
++
+The commands are installed in `~/.local/bin`.
+
+
+== Name sources
+
+The data for qngng was sourced from
+l'http://www.stat.gouv.qc.ca/statistiques/population-demographie/caracteristiques/noms_famille_1000.htm[Institut
+de la statistique] for surnames, and from
+https://www.prenomsquebec.ca/[PrénomsQuébec.ca] for first names (who in
+turn get their data from Retraite Québec's
+https://www.rrq.gouv.qc.ca/fr/enfants/banque_prenoms/Pages/banque_prenoms.aspx[Banque de prénoms]).
+
+The data for the UDA categories was sourced from the April 2019 UDA directory.

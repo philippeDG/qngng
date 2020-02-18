@@ -78,6 +78,9 @@ def _cat_file_to_objs(cat_filename, create_obj_func):
     path = os.path.join('cats', cat_filename) + '.json'
     path = pkg_resources.resource_filename(__name__, path)
 
+    if not os.path.exists(path):
+        return []
+
     with open(path) as f:
         entries = json.load(f)
 
@@ -130,6 +133,9 @@ def _random_cat_fullname(cat_name, gender):
         if gender is None or gender == _Gender.FEMALE:
             objs += _cat_file_to_objs(base_cat + '-f',
                                       lambda n, s: _FullName(n, s, _Gender.FEMALE))
+
+    if len(objs) == 0:
+        return
 
     return random.choice(objs)
 
@@ -252,10 +258,18 @@ def _run(args):
     rand_fullnames = []
 
     for cat in args.cat:
+        rand_fullname = None
+
         if cat == 'std':
-            rand_fullnames.append(_random_std_fullname(args.gender))
+            rand_fullname = _random_std_fullname(args.gender)
         else:
-            rand_fullnames.append(_random_cat_fullname(cat, args.gender))
+            rand_fullname = _random_cat_fullname(cat, args.gender)
+
+        if rand_fullname is not None:
+            rand_fullnames.append(rand_fullname)
+
+    if len(rand_fullnames) == 0:
+        raise _CliError('No name found.')
 
     rand_fullname = random.choice(rand_fullnames)
     print(_format_name(rand_fullname, args.fmt))

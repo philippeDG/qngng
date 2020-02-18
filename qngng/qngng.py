@@ -115,26 +115,15 @@ def _random_std_fullname(gender):
 
 def _random_cat_fullname(cat_name, gender):
     assert(cat_name != 'std')
-
-    base_cats = {
-        'uda': ['uda-actors', 'uda-hosts', 'uda-singers'],
-        'uda-actors': ['uda-actors'],
-        'uda-hosts': ['uda-hosts'],
-        'uda-singers': ['uda-singers'],
-        'lbl': ['lbl'],
-        'sn': ['sn'],
-    }[cat_name]
-
     objs = []
 
-    for base_cat in base_cats:
-        if gender is None or gender == _Gender.MALE:
-            objs += _cat_file_to_objs(base_cat + '-m',
-                                      lambda n, s: _FullName(n, s, _Gender.MALE))
+    if gender is None or gender == _Gender.MALE:
+        objs += _cat_file_to_objs(cat_name + '-m',
+                                  lambda n, s: _FullName(n, s, _Gender.MALE))
 
-        if gender is None or gender == _Gender.FEMALE:
-            objs += _cat_file_to_objs(base_cat + '-f',
-                                      lambda n, s: _FullName(n, s, _Gender.FEMALE))
+    if gender is None or gender == _Gender.FEMALE:
+        objs += _cat_file_to_objs(cat_name + '-f',
+                                  lambda n, s: _FullName(n, s, _Gender.FEMALE))
 
     if len(objs) == 0:
         return
@@ -194,23 +183,36 @@ def _parse_args():
     elif args.cap_camel_case:
         args.fmt = _Format.CAP_CAMEL
 
-    valid_cats = {
+    unique_cats = {
         'std',
-        'uda',
         'uda-actors',
         'uda-hosts',
         'uda-singers',
         'lbl',
         'sn',
     }
+    grouping_cats = {
+        'all',
+        'uda',
+    }
+    valid_cats = unique_cats | grouping_cats
+    real_cats = []
 
     if args.cat is None:
-        args.cat = ['std']
+        real_cats.append('std')
+    else:
+        for cat in args.cat:
+            if cat not in valid_cats:
+                raise _CliError('Unknown category `{}`.'.format(cat))
 
-    for cat in args.cat:
-        if cat not in valid_cats:
-            raise _CliError('Unknown category `{}`.'.format(cat))
+            if cat == 'all':
+                real_cats += list(unique_cats)
+            elif cat == 'uda':
+                real_cats += ['uda-actors', 'uda-hosts', 'uda-singers']
+            else:
+                real_cats.append(cat)
 
+    args.cat = real_cats
     return args
 
 

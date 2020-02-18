@@ -59,6 +59,9 @@ Karl-Hugo Van De Kerckhove
 The available categories are:
 +
 --
+`all`::
+    All the categories.
+
 `lbl`::
     Name of a character in
     https://www.onf.ca/film/bete_lumineuse/[La bête lumineuse].

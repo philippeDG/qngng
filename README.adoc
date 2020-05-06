@@ -62,6 +62,9 @@ The available categories are:
 `all`::
     All the categories.
 
+`icip`::
+    https://ici.radio-canada.ca/premiere[ICI Première] personalities.
+
 `lbl`::
     Name of a character in
     https://www.onf.ca/film/bete_lumineuse/[La bête lumineuse].
@@ -168,11 +171,25 @@ The commands are installed in `~/.local/bin`.
 
 == Name sources
 
-The data for qngng was sourced from
-l'http://www.stat.gouv.qc.ca/statistiques/population-demographie/caracteristiques/noms_famille_1000.htm[Institut
-de la statistique] for surnames, and from
-https://www.prenomsquebec.ca/[PrénomsQuébec.ca] for first names (who in
-turn get their data from Retraite Québec's
-https://www.rrq.gouv.qc.ca/fr/enfants/banque_prenoms/Pages/banque_prenoms.aspx[Banque de prénoms]).
+The data sources of qngng are:
 
-The data for the UDA categories was sourced from the April 2019 UDA directory.
+`icip` category::
+    https://ici.radio-canada.ca/premiere/emissions[List of
+    ICI{nbsp}Première shows].
+
+`lbl` category::
+    IMDB's https://www.imdb.com/title/tt0129807/[La bête lumineuse].
+
+`sn` category::
+    https://quijouequi.com/oeuvre/459/serie-noire[Série noire] on
+    _Qui Joue Qui?_.
+
+`std` category::
+    L'http://www.stat.gouv.qc.ca/statistiques/population-demographie/caracteristiques/noms_famille_1000.htm[Institut
+    de la statistique] for surnames and
+    https://www.prenomsquebec.ca/[PrénomsQuébec.ca] for first names
+    (who in turn get their data from Retraite Québec's
+    https://www.rrq.gouv.qc.ca/fr/enfants/banque_prenoms/Pages/banque_prenoms.aspx[Banque de prénoms]).
+
+`+uda*+` categories::
+    April 2019 UDA directory.

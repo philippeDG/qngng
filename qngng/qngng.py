@@ -190,6 +190,7 @@ def _parse_args():
         'uda-singers',
         'lbl',
         'sn',
+        'icip',
     }
     grouping_cats = {
         'all',

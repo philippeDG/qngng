@@ -94,7 +94,7 @@ def _cat_file_to_objs(cat_filename, create_obj_func):
     return objs
 
 
-def _random_std_fullname(double_surname, gender):
+def _random_std_fullname(surname_count, gender):
     name_objs = []
 
     if gender is None or gender == _Gender.MALE:
@@ -108,12 +108,8 @@ def _random_std_fullname(double_surname, gender):
     surname_objs = _cat_file_to_objs('std-surnames',
                                      lambda n, s: _PartialName(s))
     rand_name_obj = random.choice(name_objs)
-    rand_surname_obj = random.choice(surname_objs)
-    surname = rand_surname_obj.name
-
-    if double_surname:
-        surname = '{}-{}'.format(surname, random.choice(surname_objs).name)
-
+    rand_surname_objs = random.sample(surname_objs, surname_count)
+    surname = '-'.join([obj.name for obj in rand_surname_objs])
     return _FullName(rand_name_obj.name, surname, rand_name_obj.gender)
 
 
@@ -277,7 +273,8 @@ def _run(args):
         rand_fullname = None
 
         if cat == 'std':
-            rand_fullname = _random_std_fullname(args.double_surname, args.gender)
+            rand_fullname = _random_std_fullname(2 if args.double_surname else 1,
+                                                 args.gender)
         else:
             rand_fullname = _random_cat_fullname(cat, args.gender)
 

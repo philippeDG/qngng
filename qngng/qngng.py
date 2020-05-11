@@ -219,6 +219,9 @@ def _parse_args():
             else:
                 real_cats.append(cat)
 
+    if args.double_surname and 'std' not in real_cats:
+        raise _CliError('Cannot specify `--double-surname` without the `std` category.')
+
     args.cat = real_cats
     return args
 

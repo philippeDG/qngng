@@ -4,8 +4,10 @@
 Philippe Proulx <https://eepp.ca/>
 :toc:
 
+[.normal]
 image:https://img.shields.io/pypi/v/qngng.svg?label=Latest%20version[link="https://pypi.python.org/pypi/qngng"]
 
+[.lead]
 **_qngng_** is the
 _https://en.wikipedia.org/wiki/Quebec[Queb] name generator: next generation_.
 

@@ -76,27 +76,25 @@ The available categories are:
     https://ici.radio-canada.ca/premiere[ICI Première] personalities.
 
 `lbl`::
-    Name of a character in
-    https://www.onf.ca/film/bete_lumineuse/[La bête lumineuse].
+    https://www.onf.ca/film/bete_lumineuse/[La bête lumineuse] characters.
 
 `sn`::
-    Name of a character in
-    https://www.imdb.com/title/tt3480144/[Série noire].
+    https://www.imdb.com/title/tt3480144/[Série noire] characters.
 
 `std`::
     Popular first names and surnames.
 
 `uda`::
-    UDA member name.
+    https://uda.ca/[UDA] member names.
 
 `uda-actors`::
-    UDA actor member name.
+    UDA actor member names.
 
 `uda-hosts`::
-    UDA host member name.
+    UDA host member names.
 
 `uda-singers`::
-    UDA singer member name.
+    UDA singer member names.
 --
 
 * Generate a random male or female name:

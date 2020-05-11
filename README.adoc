@@ -48,6 +48,14 @@ $ qngng --cat=lbl
 Stéphane-Albert Boulais
 ----
 +
+----
+$ qngng --cat=icip
+----
++
+----
+René Homier-Roy
+----
++
 You can mix categories:
 +
 ----
